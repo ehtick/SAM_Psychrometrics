@@ -29,5 +29,18 @@
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
             return psychrometrics.GetRelHumFromTWetBulb(dryBulbTemperature, wetBulbTemperature, pressure) * 100;
         }
+
+        /// <summary>
+        /// Calculates relative humidity from dry bulb temperature, wet bulb temperature.
+        /// Reference: ASHRAE Handbook - Fundamentals (2017) ch. 1
+        /// </summary>
+        /// <param name="dryBulbTemperature">Dry bulb temperature [°C]</param>
+        /// <param name="dewPointTemperature">Dew Point Temperature [°C]</param>
+        /// <returns>Relative Humidity (0 - 100) [%]</returns>
+        public static double RelativeHumidity_ByDewPointTemperature(double dryBulbTemperature, double dewPointTemperature)
+        {
+            PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
+            return psychrometrics.GetRelHumFromTDewPoint(dryBulbTemperature, dewPointTemperature) * 100;
+        }
     }
 }

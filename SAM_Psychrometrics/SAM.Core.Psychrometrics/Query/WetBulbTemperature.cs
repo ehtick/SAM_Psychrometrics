@@ -32,5 +32,19 @@ namespace SAM.Core.Psychrometrics
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
             return psychrometrics.GetTWetBulbFromHumRatio(dryBulbTemperature, humidityRatio, pressure);
         }
+
+        /// <summary>
+        /// Calculate wet-bulb temperature given dry-bulb temperature, dew-point temperature, and pressure.
+        /// Reference: ASHRAE Handbook - Fundamentals (2017) ch. 1
+        /// </summary>
+        /// <param name="dryBulbTemperature">Dry Bulb Temperature [°C]</param>
+        /// <param name="dewPointTemperature">Dew Point Temperature [°C]</param>
+        /// <param name="pressure">Atmospheric Pressure [Pa]</param>
+        /// <returns>Wet Bulb Temperature [°C]</returns>
+        public static double WetBulbTemperature_ByDewPointTemperature(double dryBulbTemperature, double dewPointTemperature, double pressure)
+        {
+            PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
+            return psychrometrics.GetTWetBulbFromTDewPoint(dryBulbTemperature, dewPointTemperature, pressure);
+        }
     }
 }
