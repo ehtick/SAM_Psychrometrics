@@ -5,13 +5,29 @@ namespace SAM.Core.Psychrometrics
     public static partial class Query
     {
         /// <summary>
-        /// Wet Bulb Temperature [C]
+        /// Calculate wet-bulb temperature given dry-bulb temperature, relative humidity, and pressure.
+        /// Reference: ASHRAE Handbook - Fundamentals (2017) ch. 1
         /// </summary>
-        /// <param name="dryBulbTemperature">Dry Bulb Temperature [C]</param>
-        /// <param name="humidityRatio">Humidity Ratio [kg_water/kg_dryair]</param>
+        /// <param name="dryBulbTemperature">Dry Bulb Temperature [°C]</param>
+        /// <param name="relativeHumidity">Relative humidity (0 - 100) [%]</param>
         /// <param name="pressure">Atmospheric Pressure [Pa]</param>
-        /// <returns>Wet Bulb Temperature [C]</returns>
-        public static double WetBulbTemperature(double dryBulbTemperature, double humidityRatio, double pressure)
+        /// <returns>Wet Bulb Temperature [°C]</returns>
+        public static double WetBulbTemperature(double dryBulbTemperature, double relativeHumidity, double pressure)
+        {
+            PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
+            relativeHumidity = relativeHumidity / 100;
+            return psychrometrics.GetTWetBulbFromRelHum(dryBulbTemperature, relativeHumidity, pressure);
+        }
+
+        /// <summary>
+        /// Calculate wet-bulb temperature given dry-bulb temperature, humidity ratio, and pressure.
+        /// Reference: ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn 33 and 35 solved for Tstar
+        /// </summary>
+        /// <param name="dryBulbTemperature">Dry Bulb Temperature [°C]</param>
+        /// <param name="humidityRatio">Humidity Ratio [kg_waterVapor/kg_dryAir]</param>
+        /// <param name="pressure">Atmospheric Pressure [Pa]</param>
+        /// <returns>Wet Bulb Temperature [°C]</returns>
+        public static double WetBulbTemperature_ByHumidityRatio(double dryBulbTemperature, double humidityRatio, double pressure)
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
             return psychrometrics.GetTWetBulbFromHumRatio(dryBulbTemperature, humidityRatio, pressure);

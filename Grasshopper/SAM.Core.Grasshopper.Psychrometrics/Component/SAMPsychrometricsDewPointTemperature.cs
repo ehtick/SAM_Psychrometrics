@@ -26,7 +26,7 @@ namespace SAM.Core.Grasshopper.Psychrometrics
         /// </summary>
         public SAMPsychrometricsDewPointTemperature()
           : base("SAMPsychrometrics.DewPointTemperature", "SAMPsychrometrics.DewPointTemperature",
-              "Calculates DewPointTemperature by Relative Humidity(0 - 100)[%] and Dry Bulb Temperature [C] optionally Atmospheric Pressure [Pa] *101323 Pa ",
+              "Calculates DewPointTemperature by Relative Humidity(0 - 100)[%] and Dry Bulb Temperature [°C] optionally Atmospheric Pressure [Pa] |101325 Pa ",
               "SAM", "Psychrometrics")
         {
         }
@@ -36,7 +36,7 @@ namespace SAM.Core.Grasshopper.Psychrometrics
         /// </summary>
         protected override void RegisterInputParams(GH_InputParamManager inputParamManager)
         {
-            inputParamManager.AddNumberParameter("_dryBulbTemperature", "_dryBulbTemperature", "Dry Bulb Temperature [C]", GH_ParamAccess.item);
+            inputParamManager.AddNumberParameter("_dryBulbTemperature", "_dryBulbTemperature", "Dry Bulb Temperature [°C]", GH_ParamAccess.item);
             inputParamManager.AddNumberParameter("_relativeHumidity", "_relativeHumidity", "Relative Humidity (0 - 100) [%]", GH_ParamAccess.item);
 
             int index = inputParamManager.AddNumberParameter("_pressure_", "_pressure_", "optional Atmospheric Pressure [Pa]", GH_ParamAccess.item);
@@ -48,7 +48,7 @@ namespace SAM.Core.Grasshopper.Psychrometrics
         /// </summary>
         protected override void RegisterOutputParams(GH_OutputParamManager outputParamManager)
         {
-            outputParamManager.AddNumberParameter("dewPointTemperature", "dewPointTemperature", "Dew Point Temperature [C]", GH_ParamAccess.item);
+            outputParamManager.AddNumberParameter("dewPointTemperature", "dewPointTemperature", "Dew Point Temperature [°C]", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess dataAccess)

@@ -3,44 +3,47 @@
     public static partial class Query
     {
         /// <summary>
-        /// Calculates density from dry bulb temperature, relativeHumidity and pressure.
+        /// Calculates specific volume from dry bulb temperature, relative humidity and atmospheric pressure.
+        /// Reference: ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn. 26
         /// </summary>
         /// <param name="dryBulbTemperature">Dry bulb temperature [°C]</param>
-        /// <param name="relativeHumidity">Relative humidity (0 - 100) [%]</param>
+        /// <param name="relativeHumidity">Relative humidity [%]</param>
         /// <param name="pressure">Atmospheric pressure [Pa]</param>
-        /// <returns>Density [kg/m3]</returns>
-        public static double Density(double dryBulbTemperature, double relativeHumidity, double pressure)
+        /// <returns>Specific Volume [m³/kg]</returns>
+        public static double SpecificVolume(double dryBulbTemperature, double relativeHumidity, double pressure)
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
+            relativeHumidity = relativeHumidity / 100;
             double humidityRatio = psychrometrics.GetHumRatioFromRelHum(dryBulbTemperature, relativeHumidity, pressure);
-            return psychrometrics.GetMoistAirDensity(dryBulbTemperature, humidityRatio, pressure);
+            return psychrometrics.GetMoistAirVolume(dryBulbTemperature, humidityRatio, pressure);
         }
 
         /// <summary>
-        /// Calculates density from dry bulb temperature, humidity ratio[kg_H₂O/kg_dryAir⁻¹] and pressure.
+        /// Calculates moist air specific volume given dry-bulb temperature, humidity ratio, and atmospheric pressure.
+        /// Reference: ASHRAE Handbook - Fundamentals (2017) ch. 1 eqn. 26
         /// </summary>
         /// <param name="dryBulbTemperature">Dry bulb temperature [°C]</param>
         /// <param name="humidityRatio">Humidity Ratio [kg_waterVapor/kg_dryAir]</param>
         /// <param name="pressure">Atmospheric pressure [Pa]</param>
-        /// <returns>Density [kg/m3]</returns>
-        public static double Density_ByHumidityRatio(double dryBulbTemperature, double humidityRatio, double pressure)
+        /// <returns>Specific Volume [m³/kg]</returns>
+        public static double SpecificVolume_ByHumidityRatio(double dryBulbTemperature, double humidityRatio, double pressure)
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
-            return psychrometrics.GetMoistAirDensity(dryBulbTemperature, humidityRatio, pressure);
+            return psychrometrics.GetMoistAirVolume(dryBulbTemperature, humidityRatio, pressure);
         }
 
         /// <summary>
-        /// Calculates density from dry-bulb temperature and humidity ratio and pressure.
+        /// Calculates specific volume from dry bulb temperature, wet bulb temperature and atmospheric pressure.
         /// </summary>
         /// <param name="dryBulbTemperature">Dry bulb temperature [°C]</param>
         /// <param name="wetBulbTemperature">Wet bulb temperature [°C]</param>
         /// <param name="pressure">Atmospheric pressure [Pa]</param>
-        /// <returns>Density [kg/m3]</returns>
-        public static double Density_ByWetBulbTemperature(double dryBulbTemperature, double wetBulbTemperature, double pressure)
+        /// <returns>Specific Volume [m³/kg]</returns>
+        public static double SpecificVolume_ByWetBulbTemperature(double dryBulbTemperature, double wetBulbTemperature, double pressure)
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
             double humidityRatio = psychrometrics.GetHumRatioFromTWetBulb(dryBulbTemperature, wetBulbTemperature, pressure);
-            return psychrometrics.GetMoistAirDensity(dryBulbTemperature, humidityRatio, pressure);
+            return psychrometrics.GetMoistAirVolume(dryBulbTemperature, humidityRatio, pressure);
         }
     }
 }

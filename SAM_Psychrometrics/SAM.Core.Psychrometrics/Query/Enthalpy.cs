@@ -3,44 +3,44 @@
     public static partial class Query
     {
         /// <summary>
-        /// Calculates density from dry bulb temperature, relativeHumidity and pressure.
+        /// Calculates enthalpy from dry bulb temperature, relative humidity and pressure.
         /// </summary>
         /// <param name="dryBulbTemperature">Dry bulb temperature [°C]</param>
-        /// <param name="relativeHumidity">Relative humidity (0 - 100) [%]</param>
-        /// <param name="pressure">Atmospheric pressure [Pa]</param>
-        /// <returns>Density [kg/m3]</returns>
-        public static double Density(double dryBulbTemperature, double relativeHumidity, double pressure)
+        /// <param name="relativeHumidity">Relative humidity [%]</param>
+        /// <param name="pressure">Atmospheric pressure [Pa</param>
+        /// <returns>Enthalpy [J/kg]</returns>
+        public static double Enthalpy(double dryBulbTemperature, double relativeHumidity, double pressure)
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
+            relativeHumidity = relativeHumidity / 100;
             double humidityRatio = psychrometrics.GetHumRatioFromRelHum(dryBulbTemperature, relativeHumidity, pressure);
-            return psychrometrics.GetMoistAirDensity(dryBulbTemperature, humidityRatio, pressure);
+            return psychrometrics.GetMoistAirEnthalpy(dryBulbTemperature, humidityRatio);
         }
 
         /// <summary>
-        /// Calculates density from dry bulb temperature, humidity ratio[kg_H₂O/kg_dryAir⁻¹] and pressure.
+        /// Calculates enthalpy from dry bulb temperature and humidity ratio.
         /// </summary>
         /// <param name="dryBulbTemperature">Dry bulb temperature [°C]</param>
         /// <param name="humidityRatio">Humidity Ratio [kg_waterVapor/kg_dryAir]</param>
-        /// <param name="pressure">Atmospheric pressure [Pa]</param>
-        /// <returns>Density [kg/m3]</returns>
-        public static double Density_ByHumidityRatio(double dryBulbTemperature, double humidityRatio, double pressure)
+        /// <returns>Enthalpy [J/kg]</returns>
+        public static double Enthalpy_ByHumidityRatio(double dryBulbTemperature, double humidityRatio)
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
-            return psychrometrics.GetMoistAirDensity(dryBulbTemperature, humidityRatio, pressure);
+            return psychrometrics.GetMoistAirEnthalpy(dryBulbTemperature, humidityRatio);
         }
 
         /// <summary>
-        /// Calculates density from dry-bulb temperature and humidity ratio and pressure.
+        /// Calculates enthalpy from dry bulb temperature, wet bulb temperature and pressure.
         /// </summary>
         /// <param name="dryBulbTemperature">Dry bulb temperature [°C]</param>
         /// <param name="wetBulbTemperature">Wet bulb temperature [°C]</param>
         /// <param name="pressure">Atmospheric pressure [Pa]</param>
-        /// <returns>Density [kg/m3]</returns>
-        public static double Density_ByWetBulbTemperature(double dryBulbTemperature, double wetBulbTemperature, double pressure)
+        /// <returns>Enthalpy [J/kg]</returns>
+        public static double Enthalpy_ByWetBulbTemperature(double dryBulbTemperature, double wetBulbTemperature, double pressure)
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
             double humidityRatio = psychrometrics.GetHumRatioFromTWetBulb(dryBulbTemperature, wetBulbTemperature, pressure);
-            return psychrometrics.GetMoistAirDensity(dryBulbTemperature, humidityRatio, pressure);
+            return psychrometrics.GetMoistAirEnthalpy(dryBulbTemperature, humidityRatio);
         }
     }
 }
