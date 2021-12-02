@@ -32,7 +32,7 @@ namespace SAM.Core.Psychrometrics
                 return double.NaN;
             }
 
-            return Math.Pow(relativeHumidity / 100, 1 / 8) * (112 + (0.9 * temperature)) + (0.1 * temperature) - 112;
+            return Math.Pow(relativeHumidity / 100, 0.125) * (112 + (0.9 * temperature)) + (0.1 * temperature) - 112;
         }
 
         /// <summary>
