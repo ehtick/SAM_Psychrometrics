@@ -11,7 +11,7 @@ namespace SAM.Core.Psychrometrics
         /// </summary>
         /// <param name="dryBulbTemperature">Dry Bulb Temperature [C]</param>
         /// <param name="wetBulbTemperature">Wet Bulb Temperature [C]</param>
-        /// <param name="pressure">Pressure [Pa]</param>
+        /// <param name="pressure">Atmospheric Pressure [Pa]</param>
         /// <returns></returns>
         public static double DewPointTemperature_ByWetBulbTemperature(double dryBulbTemperature, double wetBulbTemperature, double pressure)
         {
@@ -40,7 +40,7 @@ namespace SAM.Core.Psychrometrics
         /// </summary>
         /// <param name="dryBulbTemperature">Dry Bulb Temperature [C]</param>
         /// <param name="relativeHumidity">Relative Humidity (0 - 100) [%]</param>
-        /// <param name="pressure">Pressure [Pa]</param>
+        /// <param name="pressure">Atmospheric Pressure [Pa]</param>
         /// <returns></returns>
         public static double DewPointTemperature(double dryBulbTemperature, double relativeHumidity, double pressure)
         {
