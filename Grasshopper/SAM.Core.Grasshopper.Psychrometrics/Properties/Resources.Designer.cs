@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SAM.Core.Grasshopper.TMP.Properties {
+namespace SAM.Core.Grasshopper.Psychrometrics.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SAM.Core.Grasshopper.TMP.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SAM.Core.Grasshopper.TMP.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SAM.Core.Grasshopper.Psychrometrics.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,59 +63,9 @@ namespace SAM.Core.Grasshopper.TMP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HL_Logo24 {
+        internal static System.Drawing.Bitmap SAM_Psychrometrics {
             get {
-                object obj = ResourceManager.GetObject("HL_Logo24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SAM_Explode {
-            get {
-                object obj = ResourceManager.GetObject("SAM_Explode", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SAM_Get {
-            get {
-                object obj = ResourceManager.GetObject("SAM_Get", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SAM_Get_Filterpng {
-            get {
-                object obj = ResourceManager.GetObject("SAM_Get_Filterpng", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SAM_JSON {
-            get {
-                object obj = ResourceManager.GetObject("SAM_JSON", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SAM_Names {
-            get {
-                object obj = ResourceManager.GetObject("SAM_Names", resourceCulture);
+                object obj = ResourceManager.GetObject("SAM_Psychrometrics", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

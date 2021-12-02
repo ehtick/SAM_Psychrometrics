@@ -37,13 +37,17 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\build\</OutputPath>
+    <OutputPath>..\..\build\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\build\SAM.Core.Grasshopper.Psychrometrics.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SAM.Core.Grasshopper">
+      <HintPath>..\..\..\SAM\build\SAM.Core.Grasshopper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -53,6 +57,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Component\SAMPsychrometricsDewPointTemperature.cs" />
     <Compile Include="Kernel\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -62,39 +67,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SAM_Small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\HL_Logo24.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SAM_Explode.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SAM_JSON.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SAM_Get.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SAM_Get.Filterpng.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Classes\" />
-    <Folder Include="Component\" />
     <Folder Include="Convert\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Query\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SAM_Names.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Grasshopper">
@@ -104,6 +80,24 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SAM_Psychrometrics\SAM.Core.Psychrometrics\SAM.Core.Psychrometrics.csproj">
+      <Project>{19f540dd-634a-4252-8631-74dd906917d8}</Project>
+      <Name>SAM.Core.Psychrometrics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SAM_Psychrometrics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SAM_Small.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
