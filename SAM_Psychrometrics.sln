@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SAM_Psychrometrics", "SAM_Psychrometrics", "{4FDEDAD6-FCEC-4426-9A3B-086BF3C99CC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamo", "Dynamo", "{A81D37DE-E647-4EF9-84B4-478BFD860184}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Grasshopper", "Grasshopper", "{B365D5A7-F4F1-4C45-9565-5F6CFC1134A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAM.Core.Grasshopper.Psychrometrics", "Grasshopper\SAM.Core.Grasshopper.Psychrometrics\SAM.Core.Grasshopper.Psychrometrics.csproj", "{BFC3AA9F-B5C8-46CD-9C19-2430AEAEC4F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAM.Core.Psychrometrics", "SAM_Psychrometrics\SAM.Core.Psychrometrics\SAM.Core.Psychrometrics.csproj", "{19F540DD-634A-4252-8631-74DD906917D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFC3AA9F-B5C8-46CD-9C19-2430AEAEC4F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC3AA9F-B5C8-46CD-9C19-2430AEAEC4F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC3AA9F-B5C8-46CD-9C19-2430AEAEC4F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC3AA9F-B5C8-46CD-9C19-2430AEAEC4F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F540DD-634A-4252-8631-74DD906917D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F540DD-634A-4252-8631-74DD906917D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F540DD-634A-4252-8631-74DD906917D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F540DD-634A-4252-8631-74DD906917D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BFC3AA9F-B5C8-46CD-9C19-2430AEAEC4F0} = {B365D5A7-F4F1-4C45-9565-5F6CFC1134A4}
+		{19F540DD-634A-4252-8631-74DD906917D8} = {4FDEDAD6-FCEC-4426-9A3B-086BF3C99CC0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E0308FF-C8D5-4700-951A-859CB9D4FD09}
+	EndGlobalSection
+EndGlobal
