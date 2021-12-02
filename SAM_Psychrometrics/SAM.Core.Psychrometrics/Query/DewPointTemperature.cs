@@ -12,7 +12,7 @@ namespace SAM.Core.Psychrometrics
         /// <param name="dryBulbTemperature">Dry Bulb Temperature [C]</param>
         /// <param name="wetBulbTemperature">Wet Bulb Temperature [C]</param>
         /// <param name="pressure">Atmospheric Pressure [Pa]</param>
-        /// <returns></returns>
+        /// <returns>Dew Point Tempearture [C]</returns>
         public static double DewPointTemperature_ByWetBulbTemperature(double dryBulbTemperature, double wetBulbTemperature, double pressure)
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
@@ -41,7 +41,7 @@ namespace SAM.Core.Psychrometrics
         /// <param name="dryBulbTemperature">Dry Bulb Temperature [C]</param>
         /// <param name="relativeHumidity">Relative Humidity (0 - 100) [%]</param>
         /// <param name="pressure">Atmospheric Pressure [Pa]</param>
-        /// <returns></returns>
+        /// <returns>Dew Point Tempearture [C]</returns>
         public static double DewPointTemperature(double dryBulbTemperature, double relativeHumidity, double pressure)
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);

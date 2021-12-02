@@ -4,7 +4,7 @@ using System;
 
 namespace SAM.Core.Grasshopper.Psychrometrics
 {
-    public class SAMAnalyticalAirflow : GH_SAMComponent
+    public class SAMPsychrometricsDewPointTemperature : GH_SAMComponent
     {
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
@@ -24,7 +24,7 @@ namespace SAM.Core.Grasshopper.Psychrometrics
         /// <summary>
         /// Initializes a new instance of the SAM_point3D class.
         /// </summary>
-        public SAMAnalyticalAirflow()
+        public SAMPsychrometricsDewPointTemperature()
           : base("SAMPsychrometrics.DewPointTemperature", "SAMPsychrometrics.DewPointTemperature",
               "Calculates DewPointTemperature by Relative Humidity(0 - 100)[%] and Dry Bulb Temperature [C] optionally Atmospheric Pressure [Pa] *101323 Pa ",
               "SAM", "Psychrometrics")
