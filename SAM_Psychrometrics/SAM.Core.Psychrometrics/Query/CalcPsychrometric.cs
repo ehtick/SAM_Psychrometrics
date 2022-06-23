@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace SAM.Core.Psychrometrics
 {
     public static partial class Query
@@ -67,7 +65,7 @@ namespace SAM.Core.Psychrometrics
         /// <param name="specificVolume">Specific Volume [m³/kg]</param>
         /// <param name="degreeSaturation">Degree of saturation [unitless]</param>
         /// <returns>list</returns>
-        public static bool CalcPsychrometrics_ByTWetBulb(double dryBulbTemperature, double wetBulbTemperature, double pressure, out double humidityRatio, out double relativeHumidity, out double dewPointTemperature, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation)
+        public static bool CalcPsychrometrics_ByWetBulbTemperature(double dryBulbTemperature, double wetBulbTemperature, double pressure, out double humidityRatio, out double relativeHumidity, out double dewPointTemperature, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation)
         {
             humidityRatio = double.NaN;
             relativeHumidity = double.NaN;
@@ -112,7 +110,7 @@ namespace SAM.Core.Psychrometrics
         /// <param name="specificVolume">Specific Volume [m³/kg]</param>
         /// <param name="degreeSaturation">Degree of saturation [unitless]</param>
         /// <returns>list</returns>
-        public static bool CalcPsychrometrics_ByTDewPoint(double dryBulbTemperature, double dewPointTemperature, double pressure, out double humidityRatio, out double wetBulbTemperature, out double relativeHumidity, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation)
+        public static bool CalcPsychrometrics_ByDewPointTemperature(double dryBulbTemperature, double dewPointTemperature, double pressure, out double humidityRatio, out double wetBulbTemperature, out double relativeHumidity, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation)
         {
             humidityRatio = double.NaN;
             relativeHumidity = double.NaN;

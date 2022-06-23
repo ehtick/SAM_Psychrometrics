@@ -155,7 +155,7 @@ namespace SAM.Analytical.Grasshopper
             }
             else if (double.IsNaN(relativeHumidity) && !double.IsNaN(wetBulbTemperature) && double.IsNaN(dewPointTemperature))
             {
-                Core.Psychrometrics.Query.CalcPsychrometrics_ByTWetBulb(dryBulbTemperature, wetBulbTemperature, pressure,
+                Core.Psychrometrics.Query.CalcPsychrometrics_ByWetBulbTemperature(dryBulbTemperature, wetBulbTemperature, pressure,
                      out humidityRatio,
                      out relativeHumidity,
                      out dewPointTemperature,
@@ -166,7 +166,7 @@ namespace SAM.Analytical.Grasshopper
             }
             else if (double.IsNaN(relativeHumidity) && double.IsNaN(wetBulbTemperature) && !double.IsNaN(dewPointTemperature))
             {
-                Core.Psychrometrics.Query.CalcPsychrometrics_ByTDewPoint(dryBulbTemperature, dewPointTemperature, pressure,
+                Core.Psychrometrics.Query.CalcPsychrometrics_ByDewPointTemperature(dryBulbTemperature, dewPointTemperature, pressure,
                      out humidityRatio,
                      out wetBulbTemperature,
                      out relativeHumidity,
