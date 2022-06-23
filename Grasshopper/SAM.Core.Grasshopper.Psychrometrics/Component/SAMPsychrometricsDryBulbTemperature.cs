@@ -36,9 +36,14 @@ namespace SAM.Core.Grasshopper.Psychrometrics
         /// </summary>
         protected override void RegisterInputParams(GH_InputParamManager inputParamManager)
         {
+            int index = -1;
+
             inputParamManager.AddNumberParameter("_density", "_density", "Density [kg/m3]", GH_ParamAccess.item);
-            inputParamManager.AddNumberParameter("_humidityRatio_", "_humidityRatio_", "Humidty Ratio [kg/kg]", GH_ParamAccess.item);
-            inputParamManager.AddNumberParameter("_relativeHumidity_", "_relativeHumidity_", "Relative Humidity (0 - 100) [%]", GH_ParamAccess.item);
+            index = inputParamManager.AddNumberParameter("_humidityRatio_", "_humidityRatio_", "Humidty Ratio [kg/kg]", GH_ParamAccess.item);
+            inputParamManager[index].Optional = true;
+
+            index = inputParamManager.AddNumberParameter("_relativeHumidity_", "_relativeHumidity_", "Relative Humidity (0 - 100) [%]", GH_ParamAccess.item);
+            inputParamManager[index].Optional = true;
 
             global::Grasshopper.Kernel.Parameters.Param_Number param_Number = new global::Grasshopper.Kernel.Parameters.Param_Number() { Name = "_pressure_", NickName = "_pressure_", Description = "Atmospheric pressure [Pa]", Access = GH_ParamAccess.item, Optional = true };
             param_Number.SetPersistentData(101325);
