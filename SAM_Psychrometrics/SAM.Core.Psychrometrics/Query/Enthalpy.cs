@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="dryBulbTemperature">Dry bulb temperature [°C]</param>
         /// <param name="relativeHumidity">Relative humidity [%]</param>
-        /// <param name="pressure">Atmospheric pressure [Pa</param>
+        /// <param name="pressure">Atmospheric pressure [Pa]</param>
         /// <returns>Enthalpy [J/kg]</returns>
         public static double Enthalpy(double dryBulbTemperature, double relativeHumidity, double pressure)
         {

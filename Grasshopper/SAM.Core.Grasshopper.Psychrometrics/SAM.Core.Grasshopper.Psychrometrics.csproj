@@ -57,6 +57,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Component\SAMPsychrometricsDryBulbTemperature.cs" />
     <Compile Include="Component\SAMPsychrometricsDewPointTemperature.cs" />
     <Compile Include="Component\SAMPsychrometricsPsychrometrics.cs" />
     <Compile Include="Kernel\AssemblyInfo.cs" />
