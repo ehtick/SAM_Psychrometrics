@@ -54,7 +54,7 @@ namespace SAM.Analytical.Grasshopper
                 result.Add(new GH_SAMParam(new global::Grasshopper.Kernel.Parameters.Param_Number() { Name = "humidityRatio", NickName = "humidityRatio", Description = "Humidty Ratio [kg/kg]", Access = GH_ParamAccess.item }, ParamVisibility.Binding));
                 result.Add(new GH_SAMParam(new global::Grasshopper.Kernel.Parameters.Param_Number() { Name = "wetBulbTemperature", NickName = "wetBulbTemperature", Description = "Wet bulb temperature [°C]", Access = GH_ParamAccess.item }, ParamVisibility.Binding));
                 result.Add(new GH_SAMParam(new global::Grasshopper.Kernel.Parameters.Param_Number() { Name = "dewPointTemperature", NickName = "dewPointTemperature", Description = "Dew Point Temperature [°C]", Access = GH_ParamAccess.item }, ParamVisibility.Binding));
-                result.Add(new GH_SAMParam(new global::Grasshopper.Kernel.Parameters.Param_Number() { Name = "vapourPressure", NickName = "vapourPressure", Description = "Saturation Vapour Pressure [Pa]", Access = GH_ParamAccess.item }, ParamVisibility.Binding));
+                result.Add(new GH_SAMParam(new global::Grasshopper.Kernel.Parameters.Param_Number() { Name = "saturationVapourPressure", NickName = "saturationVapourPressure", Description = "Saturation Vapour Pressure [Pa]", Access = GH_ParamAccess.item }, ParamVisibility.Binding));
                 result.Add(new GH_SAMParam(new global::Grasshopper.Kernel.Parameters.Param_Number() { Name = "enthalpy", NickName = "enthalpy", Description = "Enthalpy [J/kg]", Access = GH_ParamAccess.item }, ParamVisibility.Binding));
                 result.Add(new GH_SAMParam(new global::Grasshopper.Kernel.Parameters.Param_Number() { Name = "specificVolume", NickName = "specificVolume", Description = "Specific Volume [m³/kg]", Access = GH_ParamAccess.item }, ParamVisibility.Binding));
                 result.Add(new GH_SAMParam(new global::Grasshopper.Kernel.Parameters.Param_Number() { Name = "density", NickName = "density", Description = "Density [kg/m3]", Access = GH_ParamAccess.item }, ParamVisibility.Binding));
@@ -92,7 +92,7 @@ namespace SAM.Analytical.Grasshopper
             double humidityRatio = double.NaN;
             double wetBulbTemperature = double.NaN;
             double dewPointTemperature = double.NaN;
-            double vapourPressure = double.NaN;
+            double saturationVapourPressure = double.NaN;
             double enthalpy = double.NaN;
             double specificVolume = double.NaN;
             double degreeSaturation = double.NaN;
@@ -163,7 +163,7 @@ namespace SAM.Analytical.Grasshopper
                      out humidityRatio,
                      out wetBulbTemperature,
                      out dewPointTemperature,
-                     out vapourPressure,
+                     out saturationVapourPressure,
                      out enthalpy,
                      out specificVolume,
                      out degreeSaturation,
@@ -175,7 +175,7 @@ namespace SAM.Analytical.Grasshopper
                      out humidityRatio,
                      out relativeHumidity,
                      out dewPointTemperature,
-                     out vapourPressure,
+                     out saturationVapourPressure,
                      out enthalpy,
                      out specificVolume,
                      out degreeSaturation,
@@ -187,7 +187,7 @@ namespace SAM.Analytical.Grasshopper
                      out humidityRatio,
                      out wetBulbTemperature,
                      out relativeHumidity,
-                     out vapourPressure,
+                     out saturationVapourPressure,
                      out enthalpy,
                      out specificVolume,
                      out degreeSaturation,
@@ -199,7 +199,7 @@ namespace SAM.Analytical.Grasshopper
                     out relativeHumidity,
                     out wetBulbTemperature,
                     out dewPointTemperature,
-                    out vapourPressure,
+                    out saturationVapourPressure,
                     out enthalpy,
                     out specificVolume,
                     out degreeSaturation,
@@ -211,7 +211,7 @@ namespace SAM.Analytical.Grasshopper
                      out humidityRatio,
                      out wetBulbTemperature,
                      out relativeHumidity,
-                     out vapourPressure,
+                     out saturationVapourPressure,
                      out enthalpy,
                      out specificVolume,
                      out degreeSaturation,
@@ -223,7 +223,7 @@ namespace SAM.Analytical.Grasshopper
                      out humidityRatio,
                      out wetBulbTemperature,
                      out relativeHumidity,
-                     out vapourPressure,
+                     out saturationVapourPressure,
                      out enthalpy,
                      out specificVolume,
                      out degreeSaturation,
@@ -265,10 +265,10 @@ namespace SAM.Analytical.Grasshopper
                 dataAccess.SetData(index, dewPointTemperature);
             }
 
-            index = Params.IndexOfOutputParam("vapourPressure");
+            index = Params.IndexOfOutputParam("saturationVapourPressure");
             if (index != -1)
             {
-                dataAccess.SetData(index, vapourPressure);
+                dataAccess.SetData(index, saturationVapourPressure);
             }
 
             index = Params.IndexOfOutputParam("enthalpy");
