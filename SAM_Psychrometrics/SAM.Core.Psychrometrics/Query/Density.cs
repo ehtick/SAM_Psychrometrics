@@ -9,11 +9,12 @@
         /// <param name="relativeHumidity">Relative humidity (0 - 100) [%]</param>
         /// <param name="pressure">Atmospheric pressure [Pa]</param>
         /// <returns>Density [kg/m3]</returns>
-        public static double Density(double dryBulbTemperature, double relativeHumidity, double pressure)
+        public static double Density_ByRelativeHumidity(double dryBulbTemperature, double relativeHumidity, double pressure)
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
             double humidityRatio = psychrometrics.GetHumRatioFromRelHum(dryBulbTemperature, relativeHumidity, pressure);
-            return psychrometrics.GetMoistAirDensity(dryBulbTemperature, humidityRatio, pressure);
+
+            return Density(dryBulbTemperature, humidityRatio, pressure);
         }
 
         /// <summary>
@@ -23,7 +24,7 @@
         /// <param name="humidityRatio">Humidity Ratio [kg_waterVapor/kg_dryAir]</param>
         /// <param name="pressure">Atmospheric pressure [Pa]</param>
         /// <returns>Density [kg/m3]</returns>
-        public static double Density_ByHumidityRatio(double dryBulbTemperature, double humidityRatio, double pressure)
+        public static double Density(double dryBulbTemperature, double humidityRatio, double pressure)
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
             return psychrometrics.GetMoistAirDensity(dryBulbTemperature, humidityRatio, pressure);
@@ -40,7 +41,8 @@
         {
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
             double humidityRatio = psychrometrics.GetHumRatioFromTWetBulb(dryBulbTemperature, wetBulbTemperature, pressure);
-            return psychrometrics.GetMoistAirDensity(dryBulbTemperature, humidityRatio, pressure);
+            
+            return Density(dryBulbTemperature, humidityRatio, pressure);
         }
     }
 }
