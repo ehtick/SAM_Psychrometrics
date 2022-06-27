@@ -222,7 +222,7 @@ namespace SAM.Core.Psychrometrics
                 return false;
             }
 
-            relativeHumidity = psychrometrics.GetRelHumFromHumRatio(dryBulbTemperature, humidityRatio, pressure);
+            relativeHumidity = psychrometrics.GetRelHumFromHumRatio(dryBulbTemperature, humidityRatio, pressure) * 100;
             wetBulbTemperature = psychrometrics.GetTWetBulbFromHumRatio(dryBulbTemperature, humidityRatio, pressure);
             dewPointTemperature = psychrometrics.GetTDewPointFromHumRatio(dryBulbTemperature, humidityRatio, pressure);
             vapourPressure = psychrometrics.GetVapPresFromHumRatio(humidityRatio, pressure);
