@@ -8,18 +8,21 @@ namespace SAM.Core.Psychrometrics
         /// vapour pressure, moist air enthalpy, moist air volume, and degree of saturation of air given
         /// dry-bulb temperature, relative humidity and pressure.
         /// *The degree of saturation (i.e humidity ratio of the air / humidity ratio of the air at saturationat the same temperature and pressure)
+        /// The degree of saturation is defined as the ratio of the humidity ratio of the air to the humidity ratio 
+        /// of the air at saturation at the same temperature and pressure.
         /// </summary>
         /// <param name="dryBulbTemperature">Dry bulb temperature [°C]</param>
         /// <param name="relativeHumidity">Relative humidity (0 - 100) [%]</param>
         /// <param name="pressure">Atmospheric pressure [Pa]</param>
-        /// <param name="humidityRatio">Humidity Ratio [kg_waterVapor/kg_dryAir]</param>
-        /// <param name="wetBulbTemperature">>Wet bulb temperature [°C]</param>
-        /// <param name="dewPointTemperature">Dew Point Temperature [°C]</param>
-        /// <param name="vapourPressure">Saturation Vapour Pressure [Pa]</param>
-        /// <param name="enthalpy">Enthalpy [J/kg]</param>
-        /// <param name="specificVolume">Specific Volume [m³/kg]</param>
-        /// <param name="degreeSaturation">Degree of saturation [unitless]</param>
-        /// <returns>list</returns>
+        /// <param name="humidityRatio">Output: Humidity Ratio [kg_waterVapor/kg_dryAir]</param>
+        /// <param name="wetBulbTemperature">Output: Wet bulb temperature [°C]</param>
+        /// <param name="dewPointTemperature">Output: Dew Point Temperature [°C]</param>
+        /// <param name="vapourPressure">Output: Partial Vapour Pressure [Pa]</param>
+        /// <param name="enthalpy">Output: Enthalpy [J/kg]</param>
+        /// <param name="specificVolume">Output: Specific Volume [m³/kg]</param>
+        /// <param name="degreeSaturation">Output: Degree of saturation [unitless]</param>
+        /// <param name="density">Output: Air density [kg/m³]</param>
+        /// <returns>Boolean indicating if the calculation was successful</returns>
         public static bool CalcPsychrometrics_ByRelativeHumidity(double dryBulbTemperature, double relativeHumidity, double pressure, out double humidityRatio, out double wetBulbTemperature, out double dewPointTemperature, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
         {
             humidityRatio = double.NaN;
@@ -66,6 +69,7 @@ namespace SAM.Core.Psychrometrics
         /// <param name="enthalpy">Enthalpy [J/kg]</param>
         /// <param name="specificVolume">Specific Volume [m³/kg]</param>
         /// <param name="degreeSaturation">Degree of saturation [unitless]</param>
+        /// <param name="density">Air density [kg/m³]</param>
         /// <returns>list</returns>
         public static bool CalcPsychrometrics_ByWetBulbTemperature(double dryBulbTemperature, double wetBulbTemperature, double pressure, out double humidityRatio, out double relativeHumidity, out double dewPointTemperature, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
         {
@@ -112,6 +116,7 @@ namespace SAM.Core.Psychrometrics
         /// <param name="enthalpy">Enthalpy [J/kg]</param>
         /// <param name="specificVolume">Specific Volume [m³/kg]</param>
         /// <param name="degreeSaturation">Degree of saturation [unitless]</param>
+        /// <param name="density">Air density [kg/m³]</param>
         /// <returns>list</returns>
         public static bool CalcPsychrometrics_ByDewPointTemperature(double dryBulbTemperature, double dewPointTemperature, double pressure, out double humidityRatio, out double wetBulbTemperature, out double relativeHumidity, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
         {
@@ -158,6 +163,7 @@ namespace SAM.Core.Psychrometrics
         /// <param name="enthalpy">Enthalpy [J/kg]</param>
         /// <param name="specificVolume">Specific Volume [m³/kg]</param>
         /// <param name="degreeSaturation">Degree of saturation [unitless]</param>
+        /// <param name="density">Air density [kg/m³]</param>
         /// <returns>list</returns>
         public static bool CalcPsychrometrics_ByEnthalpy(double enthalpy, double humidityRatio, double pressure, out double dewPointTemperature, out double wetBulbTemperature, out double relativeHumidity, out double vapourPressure, out double dryBulbTemperature, out double specificVolume, out double degreeSaturation, out double density)
         {
@@ -204,6 +210,7 @@ namespace SAM.Core.Psychrometrics
         /// <param name="enthalpy">Enthalpy [J/kg]</param>
         /// <param name="specificVolume">Specific Volume [m³/kg]</param>
         /// <param name="degreeSaturation">Degree of saturation [unitless]</param>
+        /// <param name="density">Air density [kg/m³]</param>
         /// <returns>list</returns>
         public static bool CalcPsychrometrics_ByHumidityRatio(double dryBulbTemperature, double humidityRatio, double pressure, out double relativeHumidity, out double wetBulbTemperature, out double dewPointTemperature, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
         {
