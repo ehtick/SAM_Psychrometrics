@@ -124,7 +124,7 @@ namespace SAM.Analytical.Grasshopper
             index = Params.IndexOfInputParam("_humidityRatio_");
             if (index == -1 || !dataAccess.GetData(index, ref humidityRatio) || double.IsNaN(humidityRatio))
             {
-                relativeHumidity = double.NaN;
+                humidityRatio = double.NaN;
             }
 
             if(!double.IsNaN(humidityRatio) && !double.IsNaN(relativeHumidity))
