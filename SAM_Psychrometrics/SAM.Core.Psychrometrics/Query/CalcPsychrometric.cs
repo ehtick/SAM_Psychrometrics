@@ -23,12 +23,13 @@ namespace SAM.Core.Psychrometrics
         /// <param name="degreeSaturation">Output: Degree of saturation [unitless]</param>
         /// <param name="density">Output: Air density [kg/m³]</param>
         /// <returns>Boolean indicating if the calculation was successful</returns>
-        public static bool CalcPsychrometrics_ByRelativeHumidity(double dryBulbTemperature, double relativeHumidity, double pressure, out double humidityRatio, out double wetBulbTemperature, out double dewPointTemperature, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
+        public static bool CalcPsychrometrics_ByRelativeHumidity(double dryBulbTemperature, double relativeHumidity, double pressure, out double humidityRatio, out double wetBulbTemperature, out double dewPointTemperature, out double saturationVapourPressure,out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
         {
             humidityRatio = double.NaN;
             wetBulbTemperature = double.NaN;
             dewPointTemperature = double.NaN;
             //relativeHumidity = double.NaN;
+            saturationVapourPressure = double.NaN;
             vapourPressure = double.NaN;
             enthalpy = double.NaN;
             specificVolume = double.NaN;
@@ -44,6 +45,7 @@ namespace SAM.Core.Psychrometrics
             humidityRatio = psychrometrics.GetHumRatioFromRelHum(dryBulbTemperature, relativeHumidity/100, pressure);
             wetBulbTemperature = psychrometrics.GetTWetBulbFromHumRatio(dryBulbTemperature, humidityRatio, pressure);
             dewPointTemperature = psychrometrics.GetTDewPointFromHumRatio(dryBulbTemperature, humidityRatio, pressure);
+            saturationVapourPressure = psychrometrics.GetSatVapPres(dryBulbTemperature);
             vapourPressure = psychrometrics.GetVapPresFromHumRatio(humidityRatio, pressure);
             enthalpy = psychrometrics.GetMoistAirEnthalpy(dryBulbTemperature, humidityRatio);
             specificVolume = psychrometrics.GetMoistAirVolume(dryBulbTemperature, humidityRatio, pressure);
@@ -71,11 +73,12 @@ namespace SAM.Core.Psychrometrics
         /// <param name="degreeSaturation">Degree of saturation [unitless]</param>
         /// <param name="density">Air density [kg/m³]</param>
         /// <returns>list</returns>
-        public static bool CalcPsychrometrics_ByWetBulbTemperature(double dryBulbTemperature, double wetBulbTemperature, double pressure, out double humidityRatio, out double relativeHumidity, out double dewPointTemperature, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
+        public static bool CalcPsychrometrics_ByWetBulbTemperature(double dryBulbTemperature, double wetBulbTemperature, double pressure, out double humidityRatio, out double relativeHumidity, out double dewPointTemperature, out double saturationVapourPressure, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
         {
             humidityRatio = double.NaN;
             relativeHumidity = double.NaN;
             dewPointTemperature = double.NaN;
+            saturationVapourPressure = double.NaN;
             vapourPressure = double.NaN;
             enthalpy = double.NaN;
             specificVolume = double.NaN;
@@ -91,6 +94,7 @@ namespace SAM.Core.Psychrometrics
             humidityRatio = psychrometrics.GetHumRatioFromTWetBulb(dryBulbTemperature, wetBulbTemperature, pressure);
             relativeHumidity = psychrometrics.GetRelHumFromHumRatio(dryBulbTemperature, humidityRatio, pressure) * 100;
             dewPointTemperature = psychrometrics.GetTDewPointFromHumRatio(dryBulbTemperature, humidityRatio, pressure);
+            saturationVapourPressure = psychrometrics.GetSatVapPres(dryBulbTemperature);
             vapourPressure = psychrometrics.GetVapPresFromHumRatio(humidityRatio, pressure);
             enthalpy = psychrometrics.GetMoistAirEnthalpy(dryBulbTemperature, humidityRatio);
             specificVolume = psychrometrics.GetMoistAirVolume(dryBulbTemperature, humidityRatio, pressure);
@@ -118,11 +122,12 @@ namespace SAM.Core.Psychrometrics
         /// <param name="degreeSaturation">Degree of saturation [unitless]</param>
         /// <param name="density">Air density [kg/m³]</param>
         /// <returns>list</returns>
-        public static bool CalcPsychrometrics_ByDewPointTemperature(double dryBulbTemperature, double dewPointTemperature, double pressure, out double humidityRatio, out double wetBulbTemperature, out double relativeHumidity, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
+        public static bool CalcPsychrometrics_ByDewPointTemperature(double dryBulbTemperature, double dewPointTemperature, double pressure, out double humidityRatio, out double wetBulbTemperature, out double relativeHumidity, out double saturationVapourPressure, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
         {
             humidityRatio = double.NaN;
             relativeHumidity = double.NaN;
             wetBulbTemperature = double.NaN;
+            saturationVapourPressure = double.NaN;
             vapourPressure = double.NaN;
             enthalpy = double.NaN;
             specificVolume = double.NaN;
@@ -138,6 +143,7 @@ namespace SAM.Core.Psychrometrics
             humidityRatio = psychrometrics.GetHumRatioFromTDewPoint(dewPointTemperature, pressure);
             wetBulbTemperature = psychrometrics.GetTWetBulbFromHumRatio(dryBulbTemperature, humidityRatio, pressure);
             relativeHumidity = psychrometrics.GetRelHumFromHumRatio(dryBulbTemperature, humidityRatio, pressure) * 100;
+            saturationVapourPressure = psychrometrics.GetSatVapPres(dryBulbTemperature);
             vapourPressure = psychrometrics.GetVapPresFromHumRatio(humidityRatio, pressure);
             enthalpy = psychrometrics.GetMoistAirEnthalpy(dryBulbTemperature, humidityRatio);
             specificVolume = psychrometrics.GetMoistAirVolume(dryBulbTemperature, humidityRatio, pressure);
@@ -212,7 +218,7 @@ namespace SAM.Core.Psychrometrics
         /// <param name="degreeSaturation">Degree of saturation [unitless]</param>
         /// <param name="density">Air density [kg/m³]</param>
         /// <returns>list</returns>
-        public static bool CalcPsychrometrics_ByHumidityRatio(double dryBulbTemperature, double humidityRatio, double pressure, out double relativeHumidity, out double wetBulbTemperature, out double dewPointTemperature, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
+        public static bool CalcPsychrometrics_ByHumidityRatio(double dryBulbTemperature, double humidityRatio, double pressure, out double relativeHumidity, out double wetBulbTemperature, out double dewPointTemperature, out double saturationVapourPressure, out double vapourPressure, out double enthalpy, out double specificVolume, out double degreeSaturation, out double density)
         {
             relativeHumidity = double.NaN;
             wetBulbTemperature = double.NaN;
@@ -222,6 +228,7 @@ namespace SAM.Core.Psychrometrics
             specificVolume = double.NaN;
             degreeSaturation = double.NaN;
             density = double.NaN;
+            saturationVapourPressure = double.NaN;
 
             PsychroLib.Psychrometrics psychrometrics = new PsychroLib.Psychrometrics(PsychroLib.UnitSystem.SI);
             if (psychrometrics == null)
@@ -232,6 +239,7 @@ namespace SAM.Core.Psychrometrics
             relativeHumidity = psychrometrics.GetRelHumFromHumRatio(dryBulbTemperature, humidityRatio, pressure) * 100;
             wetBulbTemperature = psychrometrics.GetTWetBulbFromHumRatio(dryBulbTemperature, humidityRatio, pressure);
             dewPointTemperature = psychrometrics.GetTDewPointFromHumRatio(dryBulbTemperature, humidityRatio, pressure);
+            saturationVapourPressure = psychrometrics.GetSatVapPres(dryBulbTemperature);
             vapourPressure = psychrometrics.GetVapPresFromHumRatio(humidityRatio, pressure);
             enthalpy = psychrometrics.GetMoistAirEnthalpy(dryBulbTemperature, humidityRatio);
             specificVolume = psychrometrics.GetMoistAirVolume(dryBulbTemperature, humidityRatio, pressure);
