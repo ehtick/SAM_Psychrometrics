@@ -13,6 +13,7 @@
 	  <Deterministic>false</Deterministic>
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -27,20 +28,6 @@
     <DocumentationFile>..\..\build\SAM.Core.Grasshopper.Psychrometrics.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Classes\**" />
-    <Compile Remove="Convert\**" />
-    <Compile Remove="Interfaces\**" />
-    <Compile Remove="Query\**" />
-    <EmbeddedResource Remove="Classes\**" />
-    <EmbeddedResource Remove="Convert\**" />
-    <EmbeddedResource Remove="Interfaces\**" />
-    <EmbeddedResource Remove="Query\**" />
-    <None Remove="Classes\**" />
-    <None Remove="Convert\**" />
-    <None Remove="Interfaces\**" />
-    <None Remove="Query\**" />
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="SAM.Core.Grasshopper">
       <HintPath>..\..\..\SAM\build\SAM.Core.Grasshopper.dll</HintPath>
     </Reference>
@@ -54,6 +41,7 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
     </PackageReference>
+    <PackageReference Include="PsychroLib" Version="2.5.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SAM_Psychrometrics\SAM.Core.Psychrometrics\SAM.Core.Psychrometrics.csproj" />
